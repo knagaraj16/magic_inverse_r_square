@@ -462,7 +462,7 @@ contains
          end if
 
          if ( l_vol_heat ) then
-            this%heatTerms(:,nPhi)= opr
+            this%heatTerms(:,nPhi)= one
          end if
       end do
       !$omp end parallel
