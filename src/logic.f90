@@ -74,6 +74,7 @@ module logic
    logical :: lVerbose       ! Switch for detailed information about run progress
    logical :: l_ehd_dep      ! Switch for dilectrophoretic force
    logical :: l_ehd_die      ! Switch for dielectric heating
+   logical :: l_vol_heat      ! Switch for volumetric heating
 
    logical :: l_PressGraph   ! Store pressure in graphic files
 

@@ -85,9 +85,9 @@ contains
       &    strat,polind,DissNb,g0,g1,g2,r_cut_model,thickStrat,   &
       &    epsS,slopeStrat,rStrat,ampStrat,                       &
       &    r_LCR,nVarDiff,nVarVisc,difExp,nVarEps,interior_model, &
-      &    nVarEntropyGrad,l_isothermal,ktopp,po,prec_angle,      &
-      &    dilution_fac,stef,tmelt,phaseDiffFac,penaltyFac,       &
-      &    epsPhase,ktopphi,kbotphi,ampForce
+      &    nVarEntropyGrad,l_isothermal,l_vol_heat,ktopp,po,      &
+      &    prec_angle,dilution_fac,stef,tmelt,phaseDiffFac,       &
+      &    penaltyFac,epsPhase,ktopphi,kbotphi,ampForce
 
       namelist/B_external/                                     &
       &    rrMP,amp_imp,expo_imp,bmax_imp,n_imp,l_imp,         &
@@ -990,6 +990,7 @@ contains
 
       write(n_out,'(''  radratio        ='',ES14.6,'','')') radratio
       write(n_out,'(''  l_isothermal    ='',l3,'','')') l_isothermal
+      write(n_out,'(''  l_vol_heat      ='',l3,'','')') l_vol_heat
       write(n_out,'(''  phaseDiffFac    ='',ES14.6,'','')') phaseDiffFac
       write(n_out,'(''  epsPhase        ='',ES14.6,'','')') epsPhase
       write(n_out,'(''  penaltyFac      ='',ES14.6,'','')') penaltyFac
@@ -1361,6 +1362,7 @@ contains
       l_non_rot     =.false.  ! No Coriolis force !
       l_anel        =.false.  ! Anelastic stuff !
       l_isothermal  =.false.  ! Isothermal = 0 Grünesein !
+      l_vol_heat    =.false.  ! No volemtric heating
       interior_model="None"   ! Name of the interior model
 
       !---- Run time and number of threads:

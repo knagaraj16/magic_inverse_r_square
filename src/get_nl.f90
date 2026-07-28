@@ -30,7 +30,7 @@ module grid_space_arrays_mod
    use parallel_mod, only: get_openmp_blocks
    use constants, only: two, third, one
    use logic, only: l_conv_nl, l_heat_nl, l_mag_nl, l_anel, l_mag_LF, l_adv_curl, &
-       &            l_chemical_conv, l_precession, l_centrifuge, l_phase_field, l_ehd_dep, l_ehd_die
+       &            l_chemical_conv, l_precession, l_centrifuge, l_phase_field, l_ehd_dep, l_ehd_die, l_vol_heat
 
    implicit none
 
@@ -459,6 +459,10 @@ contains
          if ( l_ehd_die ) then
             this%heatTerms(:,nPhi)= &
             &  opr * rae/rat * radratio**2/(1.0D0-radratio)**4 * or4(nR)
+         end if
+
+         if ( l_vol_heat ) then
+            this%heatTerms(:,nPhi)= one
          end if
       end do
       !$omp end parallel
